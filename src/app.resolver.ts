@@ -7,13 +7,4 @@ export class AppResolver {
   helloWorld() {
     return 'Hello World!';
   }
-
-  @Query()
-  getPerson(): Person {
-    return {
-      email: 'kos@gmail.com',
-      name: 'kos',
-      id: 1,
-    };
-  }
 }

@@ -8,21 +8,28 @@
 /* tslint:disable */
 /* eslint-disable */
 export class PersonInput {
-    id?: Nullable<number>;
-    email?: Nullable<string>;
-    name?: Nullable<string>;
+    name: string;
+    age?: Nullable<number>;
 }
 
 export class Person {
-    id?: Nullable<number>;
-    email?: Nullable<string>;
-    name?: Nullable<string>;
+    id: number;
+    age?: Nullable<number>;
+    name: string;
 }
 
 export abstract class IQuery {
     abstract helloWorld(): Nullable<string> | Promise<Nullable<string>>;
 
-    abstract getPerson(): Nullable<Person> | Promise<Nullable<Person>>;
+    abstract getPerson(id: number): Nullable<Person> | Promise<Nullable<Person>>;
+}
+
+export abstract class IMutation {
+    abstract createPerson(personInput?: Nullable<PersonInput>): Nullable<Person> | Promise<Nullable<Person>>;
+
+    abstract updatePerson(id: number, personInput?: Nullable<PersonInput>): Person | Promise<Person>;
+
+    abstract deletePerson(id?: Nullable<number>): boolean | Promise<boolean>;
 }
 
 type Nullable<T> = T | null;
